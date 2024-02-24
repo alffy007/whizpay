@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 import Shopcard from "../components/Shopcard.jsx";
 import ShoppingList from "../components/Shoppinglist.jsx";
 
-
-
 const Landingpage = () => {
   return (
     <div className="bg-primary font-poppins w-full  text-black overflow-hidden">
@@ -19,7 +17,7 @@ const Landingpage = () => {
 
  <div className=" bg-hero-pattern bg-cover">
      <div className={` ${styles.flexStart}`} >
-      <div className={` ${styles.boxWidth} items-start flex bg-slate-200`}><Shopcard/><ShoppingList/> </div>
+      <div className={` ${styles.boxWidth} items-start flex`}><Shopcard/><ShoppingList/> </div>
     </div>
     <div className={` ${styles.paddingX}`}>
       <div className={`${styles.boxWidth}`}><Stats/> </div>

@@ -96,6 +96,6 @@ const Loginpage = () => {
 export default Loginpage;
 
 const onsubmit = () => {
-  let url = `https://api.whatsapp.com/send?phone=+1(555)129-9087&text=Welcome to Haajar your code is 673673 `;
+  let url = `https://api.whatsapp.com/send?phone=+1(555)129-9087&text=Get my bill `;
   window.open(url);
 };

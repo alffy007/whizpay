@@ -8,7 +8,7 @@ const Shopcard = () => {
     <div className="w-1/5 h-full  py-6 ">
       <h1 className="text-3xl font-medium pl-12 pt-3 pb-6">Lulu mall,Kochi</h1>
 
-      <div className="bg-gray-100  text-lg p-3 font-medium flex items-center justify-end gap-3 hover:text-white ease-in-out duration-100   hover:bg-orange-400 rounded-r-xl mb-6">
+      <div className="  text-lg p-3 font-medium flex items-center justify-end gap-3 text-white ease-in-out duration-100  bg-orange-400 rounded-r-xl mb-6">
       
         New order
         <FaCartShopping />

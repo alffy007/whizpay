@@ -19,14 +19,16 @@ const customer = (props) => {
     // Add content to the PDF
     docq.text(`Total Bill :${props.passedData + cgst + sgst}₹`, 30, 170);
     docq.text("Lulu Mall, Kochi", 10, 10);
-    docq.text(`Item: ${props.list[0]["product_name"]}`, 30, 50);
-    docq.text(`Item: ${props.list[1]["product_name"]}`, 30, 70);
-    docq.text(` Item: ${props.list[2]["product_name"]}`, 30, 90);
-    docq.text("CGST: 18%", 30, 120);
-    docq.text("SGST: 18%", 30, 130);
-    docq.text(` ${props.list[0]["price"]}₹`, 140, 50);
-    docq.text(` ${props.list[1]["price"]}₹`, 140, 70);
-    docq.text(`  ${props.list[2]["price"]}₹`, 140, 90);
+    props?.list.map((li,index) => {
+      docq.text(`Item: ${li.product_name}`, 30, 50+(index*10));
+    })
+    props?.list.map((li,index) => {
+      docq.text(`Item: ${li.price}`, 140, 50+(index*10));
+    })
+   
+    docq.text("CGST: 18%", 30, 150);
+    docq.text("SGST: 18%", 30, 160);
+   
     const fontSize = 44; // Choose the desired font size
     docq.setFontSize(fontSize);
 
@@ -43,7 +45,7 @@ const customer = (props) => {
       });
     props?.list.map((li) => {
       const docRef = doc(db, "Lulu", li.product_name);
-      const data = { warranty: li.warranty, date: "25-02-2024"};
+      const data = { warranty: li.warranty, Date: "25-02-2024"};
       setDoc(docRef, data)
         .then(() => {
           console.log("Document has been added successfully");

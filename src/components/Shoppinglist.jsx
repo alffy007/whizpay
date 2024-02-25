@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoAddCircle } from "react-icons/io5";
 import Customer from "../components/Customercard.jsx";
+import { TbDiscountCheckFilled } from "react-icons/tb";
 
 const ShoppingList = () => {
   // const [items, setItems] = useState([]);
@@ -14,45 +15,161 @@ const ShoppingList = () => {
   // };
   const [isTyping, setIsTyping] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-const [totalbill ,setTotalBill]  = useState(0)
+  const [totalbill, setTotalBill] = useState(0);
+
   const shoppingitems = [
-    { product_name: "T-shirt", price: "200₹", warranty: "No warranty" },
-    { product_name: "Jeans", price: "300₹", warranty: "No warranty" },
-    { product_name: "Jacket", price: "400₹", warranty: "1 year" },
-    { product_name: "Sneakers", price: "450₹", warranty: "6 months" },
-    { product_name: "Dress", price: "300₹", warranty: "No warranty" },
-    { product_name: "Shoes", price: "250₹", warranty: "3 months" },
-    { product_name: "Smartphone", price: "12000₹", warranty: "1 year" },
-    { product_name: "Laptop", price: "20000₹", warranty: "2 years" },
-    { product_name: "Tablet", price: "34000₹", warranty: "1 year" },
-    { product_name: "Headphones", price: "3000₹", warranty: "6 months" },
-    { product_name: "Smartwatch", price: "4000₹", warranty: "1 year" },
-    { product_name: "Camera", price: "25000₹", warranty: "2 years" },
-    { product_name: "Television", price: "20000₹", warranty: "1 year" },
-    { product_name: "Speaker", price: "2300₹", warranty: "6 months" },
-    { product_name: "Keyboard", price: "2000₹", warranty: "No warranty" },
-    { product_name: "Mouse", price: "2300₹", warranty: "No warranty" },
-    { product_name: "Backpack", price: "400₹", warranty: "3 months" },
-    { product_name: "Wallet", price: "200₹", warranty: "No warranty" },
-    { product_name: "Watch", price: "4000₹", warranty: "1 year" },
-    { product_name: "Sunglasses", price: "300₹", warranty: "No warranty" },
-    { product_name: "Hat", price: "230₹", warranty: "No warranty" },
-    { product_name: "Scarf", price: "300₹", warranty: "No warranty" },
-    { product_name: "Gloves", price: "200₹", warranty: "No warranty" },
+    {
+      product_name: "T-shirt",
+      price: "200₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
+    {
+      product_name: "Jeans",
+      price: "300₹",
+      warranty: "No warranty",
+      discounts: "15%",
+    },
+    {
+      product_name: "Jacket",
+      price: "400₹",
+      warranty: "1 year",
+      discounts: "20%",
+    },
+    {
+      product_name: "Sneakers",
+      price: "450₹",
+      warranty: "6 months",
+      discounts: "5%",
+    },
+    {
+      product_name: "Dress",
+      price: "300₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
+    {
+      product_name: "Shoes",
+      price: "250₹",
+      warranty: "3 months",
+      discounts: "12%",
+    },
+    {
+      product_name: "Smartphone",
+      price: "12000₹",
+      warranty: "1 year",
+      discounts: "8%",
+    },
+    {
+      product_name: "Laptop",
+      price: "20000₹",
+      warranty: "2 years",
+      discounts: "15%",
+    },
+    {
+      product_name: "Tablet",
+      price: "34000₹",
+      warranty: "1 year",
+      discounts: "10%",
+    },
+    {
+      product_name: "Headphones",
+      price: "3000₹",
+      warranty: "6 months",
+      discounts: "5%",
+    },
+    {
+      product_name: "Smartwatch",
+      price: "4000₹",
+      warranty: "1 year",
+      discounts: "8%",
+    },
+    {
+      product_name: "Camera",
+      price: "25000₹",
+      warranty: "2 years",
+      discounts: "12%",
+    },
+    {
+      product_name: "Television",
+      price: "20000₹",
+      warranty: "1 year",
+      discounts: "20%",
+    },
+    {
+      product_name: "Speaker",
+      price: "2300₹",
+      warranty: "6 months",
+      discounts: "5%",
+    },
+    {
+      product_name: "Keyboard",
+      price: "2000₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
+    {
+      product_name: "Mouse",
+      price: "2300₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
+    {
+      product_name: "Backpack",
+      price: "400₹",
+      warranty: "3 months",
+      discounts: "15%",
+    },
+    {
+      product_name: "Wallet",
+      price: "200₹",
+      warranty: "No warranty",
+      discounts: "5%",
+    },
+    {
+      product_name: "Watch",
+      price: "4000₹",
+      warranty: "1 year",
+      discounts: "8%",
+    },
+    {
+      product_name: "Sunglasses",
+      price: "300₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
+    {
+      product_name: "Hat",
+      price: "230₹",
+      warranty: "No warranty",
+      discounts: "5%",
+    },
+    {
+      product_name: "Scarf",
+      price: "300₹",
+      warranty: "No warranty",
+      discounts: "5%",
+    },
+    {
+      product_name: "Gloves",
+      price: "200₹",
+      warranty: "No warranty",
+      discounts: "10%",
+    },
   ];
-  
 
   const [items, setItems] = useState([]);
 
-  const handleClick = ({ product_name, price ,warranty}) => {
+  const handleClick = ({ product_name, price, warranty, discounts }) => {
     const cartitem = {
       product_name: product_name,
       price: price,
-      warranty:warranty
+      warranty: warranty,
+      discounts: discounts,
     };
     let s = items;
     const newprice = parseInt(price);
-    setTotalBill(totalbill+newprice)
+    setTotalBill(totalbill + newprice);
     s.push(cartitem);
     setItems(s);
     alert(`You clicked on ${product_name}`);
@@ -120,7 +237,8 @@ const [totalbill ,setTotalBill]  = useState(0)
                     handleClick({
                       product_name: item.product_name,
                       price: item.price,
-                      warranty:item.warranty
+                      warranty: item.warranty,
+                      discounts: item.discounts,
                     })
                   }
                   className="bg-green-600 flex justify-center items-center p-2 hover:bg-green-800 w-30 text-white  rounded-2xl"
@@ -132,36 +250,43 @@ const [totalbill ,setTotalBill]  = useState(0)
             </div>
           ))}
       </div>
-   <div className="flex flex-1 ">
-   <div className={`${isTyping ? "hidden" : ""}`}>
-        {items.map((item, index) => (
-          <div className="p-4 ml-6 mb-3 flex items-center justify-between drop-shadow-sm rounded-lg bg-slate-100 w-[800px]">
-            <div>
-              <h1 className="text-xl font-semibold ">
-                {JSON.stringify(item["product_name"]).replace(/^"(.*)"$/, "$1")}
-              </h1>
-              <h1 className=" pt-2 text-xs">Qty 1</h1>
+      <div className="flex flex-1 ">
+        <div className={`${isTyping ? "hidden" : ""}`}>
+          {items.map((item, index) => (
+            <div className="p-4 ml-6 mb-3 flex items-center justify-between drop-shadow-sm rounded-lg bg-slate-100 w-[800px]">
+              <div>
+                <h1 className="text-xl font-semibold ">
+                  {JSON.stringify(item["product_name"]).replace(
+                    /^"(.*)"$/,
+                    "$1"
+                  )}
+                </h1>
+                <h1 className=" pt-2 text-xs">Qty 1</h1>
+              </div>
+              <div>
+               <div className="  flex justify-between items-center">
+               <p className=" flex items-center font-semibold">
+          
+                  <TbDiscountCheckFilled />  {JSON.stringify(item["discounts"]).replace(/^"(.*)"$/, "$1")}
+                </p>
+                <h1 className="text-green-600 justify-end flex font-semibold text-2xl">
+                  {" "}
+                  {JSON.stringify(item["price"]).replace(/^"(.*)"$/, "$1")}
+                </h1>
+               </div>
+                <h1>
+                  <h1 className="text-gray-600 font-semibold text-sm">
+                    {" "}
+                    Warranty:{" "}
+                    {JSON.stringify(item["warranty"]).replace(/^"(.*)"$/, "$1")}
+                  </h1>
+                </h1>
+              </div>
             </div>
-          <div >
-          <h1 className="text-green-600 justify-end flex font-semibold text-2xl">
-              {" "}
-              {JSON.stringify(item["price"]).replace(/^"(.*)"$/, "$1")}
-            </h1>
-            <h1>
-            <h1 className="text-gray-600 font-semibold text-sm">
-              {" "}
-              Warranty: {JSON.stringify(item["warranty"]).replace(/^"(.*)"$/, "$1")}
-            </h1>
-            </h1>
-          </div>
-            
-          </div>
-        ))}
-        
-      </div>   
-      <Customer list={items} passedData={totalbill} />
-   </div>
-   
+          ))}
+        </div>
+        <Customer list={items} passedData={totalbill} />
+      </div>
     </div>
   );
 };

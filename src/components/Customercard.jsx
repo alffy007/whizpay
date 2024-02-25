@@ -23,7 +23,10 @@ const customer = (props) => {
       docq.text(`Item: ${li.product_name}`, 30, 50+(index*10));
     })
     props?.list.map((li,index) => {
-      docq.text(`Item: ${li.price}`, 140, 50+(index*10));
+      docq.text(` ${li.discounts}`, 100, 50+(index*10));
+    })
+    props?.list.map((li,index) => {
+      docq.text(`${li.price}`, 140, 50+(index*10));
     })
    
     docq.text("CGST: 18%", 30, 150);
@@ -45,7 +48,7 @@ const customer = (props) => {
       });
     props?.list.map((li) => {
       const docRef = doc(db, "Lulu", li.product_name);
-      const data = { warranty: li.warranty, Date: "25-02-2024"};
+      const data = { warranty: li.warranty, Date: "25-02-2024",discounts:li.discounts};
       setDoc(docRef, data)
         .then(() => {
           console.log("Document has been added successfully");
